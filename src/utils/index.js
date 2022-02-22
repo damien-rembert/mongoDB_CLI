@@ -10,9 +10,10 @@ class Movie {
         return "Success";
     }
 
-    async list() {
+    async list(collection) {
         // list all movies in the db
-        return await collection.find();
+        return await collection.find().toArray();
+        
     }
 }
 
