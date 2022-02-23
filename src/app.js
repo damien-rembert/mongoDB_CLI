@@ -15,21 +15,35 @@ const app = async (yargsObj) => {
     const collection = await connection();
     try {
         if (yargsObj.add) {
-            // take movie info, add it to the mongodb and console log a success message
+            // Create: take movie info, add it to the mongodb and console log a success message
             const movie = new Movie(yargsObj.title, yargsObj.actor);
             console.log(await movie.add(collection));
 
         } else if (yargsObj.list) {
-            // list all movies in the database
+            // Read: list all movies in the database
             console.log(await collection.find().toArray());
 
-
-        } else if (yargsObj.updateLast) {
+        } else if (yargsObj.find) {
+            // Read: list all movies in the database 
             const movie = new Movie(yargsObj.title, yargsObj.actor);
-            console.log(await movie.updateOne(collection))
+            await movie.findOneByTitle(collection);
+
+
+        // } else if (yargsObj.updateLast) {
+        //     const movie = new Movie(yargsObj.title, yargsObj.actor);
+        //     console.log(await movie.updateOne(collection))
+
+        } else if (yargsObj.update) {
+            // Update: list all movies in the database
+            const movie = new Movie(yargsObj.title, yargsObj.actor);
+            console.log(await movie.update(collection));
 
         } else if (yargsObj.delete) {
-            // all movies in the database
+            const movie = new Movie(yargsObj.title, yargsObj.actor);
+            console.log(await movie.update(collection));
+
+
+
         } else {
             console.log("Incorrect command");
         }
