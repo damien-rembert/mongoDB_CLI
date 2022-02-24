@@ -1,4 +1,4 @@
-//@ts-check
+// @ts-check
 const yargs = require("yargs");
 const Movie = require("./utils");
 const { client, connection } = require("./db/connection");

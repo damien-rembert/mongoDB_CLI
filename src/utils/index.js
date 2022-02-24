@@ -1,3 +1,4 @@
+// @ts-check
 class Movie {
     constructor (title, actor = "Not specified") {
         this.title = title;
